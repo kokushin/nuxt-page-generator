@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "id": "hello-world",
+      "title": "Hello, World!!",
+      "body": "<h2>Heading</h2><p>Nulla ipsum ad ea pariatur exercitation.</p>",
+      "tag": "Test",
+      "created_at": "2020/02/01 00:00:00"
+    },
+    {
+      "id": "hello-world-ja",
+      "title": "こんにちは、世界",
+      "body": "<h2>見出し</h2><p>これはテスト用のダミーテキストです。</p>",
+      "tag": "テスト",
+      "created_at": "2020/02/01 00:00:00"
+    }
+  ]
+}
