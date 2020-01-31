@@ -1,15 +1,18 @@
 <template>
   <article>
     <header>
-      <h1>{{ blog.title }}</h1>
+      <h1>{{ post.title }}</h1>
     </header>
     <main>
-      <div v-html="blog.body" />
+      <figure>
+        <img :src="post.thumb" alt="" />
+      </figure>
+      <div v-html="post.body" />
     </main>
     <footer>
-      <p>Tag: {{ blog.tag }}</p>
-      <time :datetime="blog.created_at">{{
-        $dayjs(blog.created_at).format('YYYY.MM.DD')
+      <p>Tag: {{ post.tag }}</p>
+      <time :datetime="post.created_at">{{
+        $dayjs(post.created_at).format('YYYY.MM.DD')
       }}</time>
     </footer>
   </article>
@@ -18,16 +21,43 @@
 <script>
 export default {
   asyncData({ params }) {
-    const fetchblog = () => {
-      const blog = require(`~/db/blog.json`)
-      return blog.items.filter((item) => {
-        if (item.id === params.id) {
-          return item
+    const fetchPosts = () => {
+      const posts = require(`~/db/posts.json`)
+      return posts.items.filter((post) => {
+        if (post.id === params.id) {
+          return post
         }
       })
     }
     return {
-      blog: fetchblog()[0]
+      post: fetchPosts()[0]
+    }
+  },
+  head() {
+    return {
+      title: this.post.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.post.description
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.post.title
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.post.description
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: this.post.thumb
+        }
+      ]
     }
   }
 }

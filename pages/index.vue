@@ -1,6 +1,6 @@
 <template>
   <section>
-    <article v-for="item in blog.items" :key="item.id">
+    <article v-for="item in posts.items" :key="item.id">
       <nuxt-link :to="`/blog/${item.id}`">
         <h2>{{ item.title }}</h2>
         <p>Tag: {{ item.tag }}</p>
@@ -16,7 +16,7 @@
 export default {
   asyncData({ params }) {
     return {
-      blog: require(`~/db/blog.json`)
+      posts: require(`~/db/posts.json`)
     }
   }
 }

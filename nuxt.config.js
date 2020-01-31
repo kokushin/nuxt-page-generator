@@ -1,4 +1,4 @@
-import blog from './db/blog.json'
+import posts from './db/posts.json'
 
 export default {
   mode: 'universal',
@@ -52,8 +52,8 @@ export default {
   },
   generate: {
     routes() {
-      return blog.items.map((item) => {
-        return `blog/${item.id}`
+      return posts.items.map((post) => {
+        return `post/${post.id}`
       })
     }
   }
